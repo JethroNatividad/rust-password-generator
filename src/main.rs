@@ -10,6 +10,16 @@ fn generate_password(
     has_special_characters: bool,
     has_numbers: bool,
 ) -> String {
+    // if length < 5 error
+
+    // construct characters
+    // add to characters based on condition
+
+    // construct initial password, add atleast 1 based on condition,
+    // loop length - initial length
+    // add to password
+    // shuffle password once more
+    // return password
 }
 #[cfg(test)]
 mod tests {
