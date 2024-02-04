@@ -11,8 +11,18 @@ fn generate_password(
     has_numbers: bool,
 ) -> String {
     // if length < 5 error
+    if length < 5 {
+        return "".to_string();
+    }
 
     // construct characters
+    let mut characters: String = "".to_string();
+    if has_lowercase {
+        characters += "abcdefghijklmnopqrstuvwxyz";
+    }
+    if has_uppercase {
+        characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
     // add to characters based on condition
 
     // construct initial password, add atleast 1 based on condition,
@@ -20,6 +30,8 @@ fn generate_password(
     // add to password
     // shuffle password once more
     // return password
+
+    "".to_string()
 }
 #[cfg(test)]
 mod tests {
