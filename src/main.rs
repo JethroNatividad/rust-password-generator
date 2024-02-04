@@ -15,8 +15,8 @@ fn generate_password(
     length: i32,
     has_lowercase: bool,
     has_uppercase: bool,
-    has_special_characters: bool,
     has_numbers: bool,
+    has_special_characters: bool,
 ) -> String {
     // if length < 5 error
     if length < 5 {
