@@ -3,6 +3,14 @@
 // Process: generate random password
 // Output: random password
 
+fn generate_password(
+    length: i64,
+    has_lowercase: bool,
+    has_uppercase: bool,
+    has_special_characters: bool,
+    has_numbers: bool,
+) -> String {
+}
 #[cfg(test)]
 mod tests {
     use super::*;
