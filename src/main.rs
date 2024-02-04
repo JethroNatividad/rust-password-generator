@@ -26,6 +26,9 @@ fn generate_password(
     if has_numbers {
         characters += "0123456789";
     }
+    if has_special_characters {
+        characters += "!@#$%^&*()[]{};:,.<>?/\\|";
+    }
     // add to characters based on condition
 
     // construct initial password, add atleast 1 based on condition,
