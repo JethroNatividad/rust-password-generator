@@ -1,15 +1,14 @@
-use rand::seq::SliceRandom;
-
+use rand::Rng;
 
 // Write a program that generates password with special characters, and numbers
 // Inputs: length, has_lowercase, has_uppercase, has_special_characters, has_numbers
 // Process: generate random password
 // Output: random password
 
-fn get_random_character(string: &str) -> &str {
+fn get_random_character(string: &str) -> char {
     let mut rng = rand::thread_rng();
-    let random_char: Option<&char> = string.chars().collect::<Vec<char>>().choose(&mut rng);
-    &random_char.unwrap().to_string()
+    let idx = rng.gen_range(0..string.chars().count());
+    string.chars().nth(idx).unwrap()
 }
 
 fn generate_password(
@@ -38,7 +37,7 @@ fn generate_password(
     // add to characters based on condition
     if has_lowercase {
         characters += lowercase;
-        password += 
+        password += get_random_character(lowercase);
     }
 
     if has_uppercase {
