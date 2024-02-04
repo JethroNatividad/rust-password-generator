@@ -42,12 +42,15 @@ fn generate_password(
 
     if has_uppercase {
         characters += uppercase;
+        password.push(get_random_character(uppercase));
     }
     if has_numbers {
         characters += numbers;
+        password.push(get_random_character(numbers));
     }
     if has_special_characters {
         characters += special_characters;
+        password.push(get_random_character(special_characters));
     }
 
     // construct initial password, add atleast 1 based on condition,
