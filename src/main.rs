@@ -8,7 +8,6 @@ mod tests {
     use super::*;
 
     #[test]
-    #[test]
     fn test_password_length() {
         for i in 1..20 {
             let password = generate_password(i, true, true, true, true);
@@ -53,6 +52,34 @@ mod tests {
             !has_special,
             "Password should not contain special characters"
         );
+    }
+
+    #[test]
+    fn test_password_all_false() {
+        let password = generate_password(12, false, false, false, false);
+        let has_lowercase = password.chars().any(|c| c.is_lowercase());
+        let has_uppercase = password.chars().any(|c| c.is_uppercase());
+        let has_numeric = password.chars().any(|c| c.is_numeric());
+        let has_special = password
+            .chars()
+            .any(|c| "!@#$%^&*()[]{};:,.<>?/\\|".contains(c));
+
+        assert!(
+            !has_lowercase && !has_uppercase && !has_numeric && !has_special,
+            "Password should not contain any characters"
+        );
+    }
+
+    #[test]
+    fn test_password_length_zero() {
+        let password = generate_password(0, true, true, true, true);
+        assert_eq!(password.len(), 0, "Password length should be 0");
+    }
+
+    #[test]
+    fn test_password_length_negative() {
+        let password = generate_password(-5, true, true, true, true);
+        assert_eq!(password.len(), 0, "Password length should be 0");
     }
 }
 fn main() {
