@@ -22,10 +22,13 @@ fn generate_password(
 
     // construct characters
     let mut characters: String = "".to_string();
+    let mut password: String = "".to_string();
+
     // add to characters based on condition
     if has_lowercase {
         characters += lowercase;
     }
+
     if has_uppercase {
         characters += uppercase;
     }
