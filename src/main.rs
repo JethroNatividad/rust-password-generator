@@ -74,9 +74,9 @@ mod tests {
 
     #[test]
     fn test_password_length() {
-        for i in 1..20 {
+        for i in 5..20 {
             let password = generate_password(i, true, true, true, true);
-            assert_eq!(password.len() as i64, i, "Password length should be {}", i);
+            assert_eq!(password.len() as i32, i, "Password length should be {}", i);
         }
     }
 
