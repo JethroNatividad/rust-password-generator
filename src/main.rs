@@ -1,3 +1,5 @@
+use rand::prelude::*;
+
 // Write a program that generates password with special characters, and numbers
 // Inputs: length, has_lowercase, has_uppercase, has_special_characters, has_numbers
 // Process: generate random password
@@ -14,6 +16,8 @@ fn generate_password(
     if length < 5 {
         return "".to_string();
     }
+
+    let mut rng = rand::thread_rng();
 
     let lowercase: &str = "abcdefghijklmnopqrstuvwxyz";
     let uppercase: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
