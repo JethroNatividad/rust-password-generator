@@ -15,30 +15,37 @@ fn generate_password(
         return "".to_string();
     }
 
+    let lowercase: &str = "abcdefghijklmnopqrstuvwxyz";
+    let uppercase: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let numbers: &str = "0123456789";
+    let special_characters: &str = "!@#$%^&*()[]{};:,.<>?/\\|";
+
     // construct characters
     let mut characters: String = "".to_string();
+    // add to characters based on condition
     if has_lowercase {
-        characters += "abcdefghijklmnopqrstuvwxyz";
+        characters += lowercase;
     }
     if has_uppercase {
-        characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        characters += uppercase;
     }
     if has_numbers {
-        characters += "0123456789";
+        characters += numbers;
     }
     if has_special_characters {
-        characters += "!@#$%^&*()[]{};:,.<>?/\\|";
+        characters += special_characters;
     }
-    // add to characters based on condition
 
     // construct initial password, add atleast 1 based on condition,
+    // let mut password: String =
     // loop length - initial length
     // add to password
     // shuffle password once more
     // return password
 
-    "".to_string()
+    characters
 }
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -47,7 +54,7 @@ mod tests {
     fn test_password_length() {
         for i in 1..20 {
             let password = generate_password(i, true, true, true, true);
-            assert_eq!(password.len(), i, "Password length should be {}", i);
+            assert_eq!(password.len() as i64, i, "Password length should be {}", i);
         }
     }
 
