@@ -34,27 +34,31 @@ fn generate_password(
     let mut characters: String = "".to_string();
     let mut password: String = "".to_string();
 
+    let mut n_choices: i32 = 0;
+
     // add to characters based on condition
+    // construct initial password, add atleast 1 based on condition,
     if has_lowercase {
         characters += lowercase;
         password.push(get_random_character(lowercase));
+        n_choices += 1;
     }
-
     if has_uppercase {
         characters += uppercase;
         password.push(get_random_character(uppercase));
+        n_choices += 1;
     }
     if has_numbers {
         characters += numbers;
         password.push(get_random_character(numbers));
+        n_choices += 1;
     }
     if has_special_characters {
         characters += special_characters;
         password.push(get_random_character(special_characters));
+        n_choices += 1;
     }
 
-    // construct initial password, add atleast 1 based on condition,
-    // let mut password: String =
     // loop length - initial length
     // add to password
     // shuffle password once more
