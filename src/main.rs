@@ -37,7 +37,7 @@ fn generate_password(
     // add to characters based on condition
     if has_lowercase {
         characters += lowercase;
-        password += get_random_character(lowercase);
+        password.push(get_random_character(lowercase));
     }
 
     if has_uppercase {
