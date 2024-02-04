@@ -23,6 +23,9 @@ fn generate_password(
     if has_uppercase {
         characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
+    if has_numbers {
+        characters += "0123456789";
+    }
     // add to characters based on condition
 
     // construct initial password, add atleast 1 based on condition,
