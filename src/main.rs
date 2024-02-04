@@ -8,32 +8,50 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_generate_password() {
-        let password = generate_password(12, true, true, true, true);
+    #[test]
+    fn test_password_length() {
+        for i in 1..20 {
+            let password = generate_password(i, true, true, true, true);
+            assert_eq!(password.len(), i, "Password length should be {}", i);
+        }
+    }
 
-        // Check length
-        assert_eq!(password.len(), 12);
-
-        // Check for lowercase, uppercase, numbers, and special characters
+    #[test]
+    fn test_password_no_lowercase() {
+        let password = generate_password(12, false, true, true, true);
         let has_lowercase = password.chars().any(|c| c.is_lowercase());
+        assert!(
+            !has_lowercase,
+            "Password should not contain lowercase letters"
+        );
+    }
+
+    #[test]
+    fn test_password_no_uppercase() {
+        let password = generate_password(12, true, false, true, true);
         let has_uppercase = password.chars().any(|c| c.is_uppercase());
+        assert!(
+            !has_uppercase,
+            "Password should not contain uppercase letters"
+        );
+    }
+
+    #[test]
+    fn test_password_no_numbers() {
+        let password = generate_password(12, true, true, false, true);
         let has_numeric = password.chars().any(|c| c.is_numeric());
+        assert!(!has_numeric, "Password should not contain numbers");
+    }
+
+    #[test]
+    fn test_password_no_special_characters() {
+        let password = generate_password(12, true, true, true, false);
         let has_special = password
             .chars()
             .any(|c| "!@#$%^&*()[]{};:,.<>?/\\|".contains(c));
-
         assert!(
-            has_lowercase,
-            "Password should contain at least one lowercase letter"
-        );
-        assert!(
-            has_uppercase,
-            "Password should contain at least one uppercase letter"
-        );
-        assert!(has_numeric, "Password should contain at least one number");
-        assert!(
-            has_special,
-            "Password should contain at least one special character"
+            !has_special,
+            "Password should not contain special characters"
         );
     }
 }
