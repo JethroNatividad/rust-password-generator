@@ -174,7 +174,7 @@ fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
 fn get_yes_or_no(prompt: &str) -> bool {
     loop {
         let input: String = get_input(prompt);
-        match input.as_str() {
+        match input.to_lowercase().as_str() {
             "y" => return true,
             "n" => return false,
             _ => println!("Invalid input. Please try again."),
@@ -198,9 +198,16 @@ fn main() {
     }
 
     // get has_lowercase, "Include lowercase? (y/n): ";
+    let has_lowercase: bool = get_yes_or_no("Include Lowercase? (y/n): ");
+
     // get has_uppercase, "Include Uppercase? (y/n): ";
+    let has_uppercase: bool = get_yes_or_no("Include Uppercase? (y/n): ");
+
     // get has_numbers, "Include Numbers? (y/n): ";
+    let has_numbers: bool = get_yes_or_no("Include Numbers? (y/n): ");
+
     // get has_special_characters, "Include Special Characters? (y/n): ";
+    let has_special_characters: bool = get_yes_or_no("Include Special Characters? (y/n): ");
 
     // generate password
     // print "Your password is: {}"
