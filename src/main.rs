@@ -173,10 +173,22 @@ fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
 
 fn main() {
     // print "Password Generator"
+    println!("Password Generator");
     // get password_length, "Enter password length: ";
     // password_length must be altleast 5
 
+    let mut password_length: i32;
+    loop {
+        password_length = get_input("Enter password length: ");
+        if password_length < 5 {
+            println!("Password length must be atleast 5");
+        } else {
+            break;
+        }
+    }
+
     // get has_lowercase, "Include lowercase? (y/n): ";
+
     // get has_uppercase, "Include Uppercase? (y/n): ";
     // get has_numbers, "Include Numbers? (y/n): ";
     // get has_special_characters, "Include Special Characters? (y/n): ";
