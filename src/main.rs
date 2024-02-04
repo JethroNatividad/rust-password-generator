@@ -1,3 +1,4 @@
+use rand::seq::SliceRandom;
 use rand::Rng;
 use std::io;
 use std::io::Write;
@@ -7,9 +8,17 @@ use std::io::Write;
 // Process: generate random password
 // Output: random password
 
+fn shuffle_string(string: &str) -> String {
+    // convert to vec
+    let mut chars: Vec<char> = string.chars().collect();
+    let mut rng = rand::thread_rng();
+    // shuffle
+    chars.shuffle(&mut rng);
+    chars.into_iter().collect()
+}
 fn get_random_character(string: &str) -> char {
     let mut rng = rand::thread_rng();
-    let idx = rng.gen_range(0..string.chars().count());
+    let idx = rng.gen_range(0..string.len());
     string.chars().nth(idx).unwrap()
 }
 
