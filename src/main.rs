@@ -171,6 +171,16 @@ fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
     }
 }
 
+fn get_yes_or_no(prompt: &str) -> bool {
+    loop {
+        let input: String = get_input(prompt);
+        match input.as_str() {
+            "y" => return true,
+            "n" => return false,
+            _ => println!("Invalid input. Please try again."),
+        }
+    }
+}
 fn main() {
     // print "Password Generator"
     println!("Password Generator");
@@ -188,7 +198,6 @@ fn main() {
     }
 
     // get has_lowercase, "Include lowercase? (y/n): ";
-
     // get has_uppercase, "Include Uppercase? (y/n): ";
     // get has_numbers, "Include Numbers? (y/n): ";
     // get has_special_characters, "Include Special Characters? (y/n): ";
