@@ -57,6 +57,10 @@ fn generate_password(
         n_choices += 1;
     }
 
+    if n_choices < 1 {
+        return "".to_string();
+    }
+
     // loop length - initial length
     for _ in 0..(length - n_choices) {
         // add to password
