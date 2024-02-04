@@ -12,7 +12,7 @@ fn get_random_character(string: &str) -> char {
 }
 
 fn generate_password(
-    length: i64,
+    length: i32,
     has_lowercase: bool,
     has_uppercase: bool,
     has_special_characters: bool,
@@ -22,8 +22,6 @@ fn generate_password(
     if length < 5 {
         return "".to_string();
     }
-
-    let mut rng = rand::thread_rng();
 
     let lowercase: &str = "abcdefghijklmnopqrstuvwxyz";
     let uppercase: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -60,11 +58,14 @@ fn generate_password(
     }
 
     // loop length - initial length
-    // add to password
-    // shuffle password once more
-    // return password
+    for _ in 0..(length - n_choices) {
+        // add to password
+        password.push(get_random_character(characters.as_str()));
+        // shuffle password once more
+        // return password
+    }
 
-    characters
+    password
 }
 
 #[cfg(test)]
