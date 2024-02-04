@@ -197,17 +197,30 @@ fn main() {
         }
     }
 
-    // get has_lowercase, "Include lowercase? (y/n): ";
-    let has_lowercase: bool = get_yes_or_no("Include Lowercase? (y/n): ");
+    let mut has_lowercase: bool;
+    let mut has_uppercase: bool;
+    let mut has_numbers: bool;
+    let mut has_special_characters: bool;
 
-    // get has_uppercase, "Include Uppercase? (y/n): ";
-    let has_uppercase: bool = get_yes_or_no("Include Uppercase? (y/n): ");
+    loop {
+        // get has_lowercase, "Include lowercase? (y/n): ";
+        has_lowercase = get_yes_or_no("Include Lowercase? (y/n): ");
 
-    // get has_numbers, "Include Numbers? (y/n): ";
-    let has_numbers: bool = get_yes_or_no("Include Numbers? (y/n): ");
+        // get has_uppercase, "Include Uppercase? (y/n): ";
+        has_uppercase = get_yes_or_no("Include Uppercase? (y/n): ");
 
-    // get has_special_characters, "Include Special Characters? (y/n): ";
-    let has_special_characters: bool = get_yes_or_no("Include Special Characters? (y/n): ");
+        // get has_numbers, "Include Numbers? (y/n): ";
+        has_numbers = get_yes_or_no("Include Numbers? (y/n): ");
+
+        // get has_special_characters, "Include Special Characters? (y/n): ";
+        has_special_characters = get_yes_or_no("Include Special Characters? (y/n): ");
+
+        if !has_lowercase && !has_uppercase && !has_numbers && !has_special_characters {
+            println!("Please Include Atleast 1.")
+        } else {
+            break;
+        }
+    }
 
     // generate password
     let random_password: String = generate_password(
