@@ -210,5 +210,13 @@ fn main() {
     let has_special_characters: bool = get_yes_or_no("Include Special Characters? (y/n): ");
 
     // generate password
+    let random_password: String = generate_password(
+        password_length,
+        has_lowercase,
+        has_uppercase,
+        has_numbers,
+        has_special_characters,
+    );
     // print "Your password is: {}"
+    println!("Your password is: {}", random_password);
 }
