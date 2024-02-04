@@ -16,6 +16,7 @@ fn shuffle_string(string: &str) -> String {
     chars.shuffle(&mut rng);
     chars.into_iter().collect()
 }
+
 fn get_random_character(string: &str) -> char {
     let mut rng = rand::thread_rng();
     let idx = rng.gen_range(0..string.len());
@@ -76,9 +77,10 @@ fn generate_password(
     for _ in 0..(length - n_choices) {
         // add to password
         password.push(get_random_character(characters.as_str()));
-        // shuffle password once more
-        // return password
     }
+    // shuffle password once more
+    password = shuffle_string(&password);
+    // return password
 
     password
 }
